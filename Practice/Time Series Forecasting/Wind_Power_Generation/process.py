@@ -143,14 +143,17 @@ def plot_components(dict_dfs_fit, dict_dfs_forecast, type):
 
 
 
-def plot_plotly_prediction(dict_dfs_fit, dict_dfs_forecast,type):
-    fig ={}
+def plot_plotly_prediction(dict_dfs_fit, dict_dfs_forecast, type):
+    fig = {}
 
-    for (key_lib, df), (key_forecast, forecast_df) in zip (dict_dfs_fit.items(), dict_dfs_forecast.items()):
+    for (key_lib, df_fit), (key_forecast, df_forecast) in zip(dict_dfs_fit.items(), dict_dfs_forecast.items()):
         #plt.figure()  # Create a new figure
-        plot_plotly(df,forecast_df)
-        #plt.title(f"{type} of {key_forecast}")
-        #fig[key_lib] = plt.gcf() # Get the current figure and store it in the dictionary
+        plot_plotly(df_fit, df_forecast)
+        plt.title(f"{type} of {key_forecast}")
+        fig[key_lib] = plt.gcf()  # Get the current figure and store it in the dictionary
+
+    return fig
+        
 
 def plot_plotly_components(dict_dfs_fit, dict_dfs_forecast, type):
     fig ={}
