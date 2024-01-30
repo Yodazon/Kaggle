@@ -126,8 +126,11 @@ def prophet_forecast (dict_dfs_lib, dict_dfs_future ):
 def plot_prediciton(dict_dfs_fit, dict_dfs_forecast, type):
     fig ={}
     for (key_lib, df), (key_forecast, forecast_df) in zip (dict_dfs_fit.items(), dict_dfs_forecast.items()):
+
         plt.figure()  # Create a new figure
         df.plot(forecast_df)
+        plt.xlabel("Year")
+        plt.ylabel("Power %")
         plt.title(f"{type} of {key_forecast}")
         fig[key_lib] = plt.gcf() # Get the current figure and store it in the dictionary
 
